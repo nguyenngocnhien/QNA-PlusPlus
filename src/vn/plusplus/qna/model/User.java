@@ -2,7 +2,6 @@ package vn.plusplus.qna.model;
 
 public class User {
     String userName,fullName,email,phone;
-
     public User() {
     }
 
