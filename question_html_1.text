@@ -1,0 +1,5 @@
+HTML1_1#Thẻ HTML nào tạo ra một ô nhập dữ liệu?# <textinput type="text">#<textfield>#<input type="textfield">#<input type="text">#D
+HTML1_2#Đâu là phần tử HTML tạo ra một danh sách đầu mục bởi dấu chấm?#<dl>#<ul>#<list>#<ol>#B
+HTML1_3#Phần tử HTML nào định nghĩa dữ liệu sẽ hiển thị trên thanh tiêu đề của tài liệu?#<meta>#<title>#<head>#body#B
+HTML1_4#Chọn phần tử HTML được dùng nhấn mạnh nội dung văn bản?#<b>#<italic>#<i>#<em>#D
+HTML1_5#Thuộc tính HTML nào xác định một văn bản sẽ dùng thay thế cho hình ảnh, nếu hình ảnh không thể được hiển thị?#title#src#alt#longdesc#C
