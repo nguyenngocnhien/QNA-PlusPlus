@@ -1,0 +1,5 @@
+JV2_1#Để đảo giá trị của một biến boolean, ta dùng toán tử nào?#!#<<#>>#||#A
+JV2_2#Cách khai báo mảng nào sau đây là đúng?#int[] a;#int a[];#int a[]=new int[5];#Cả 3 khai báo đều đúng#D
+JV2_3#Lệnh nào ngừng vòng lặp hiện thời và bắt đầu vòng lặp tiếp theo?#continue#break#end#cease#A
+JV2_4#Chức năng của vòng lặp while là gì?#Kiểm tra kết quả của biểu thức boolean#Tránh mâu thuẫn giữa bên trong và bên ngoài switch#Lặp lại khối lệnh chứng nào điều kiện là đúng#Không đáp án nào đúng#C
+JV2_5#Trong Java, kiểu dữ liệu nào là một địa chỉ của đối tượng hoặc một mảng được tạo ra trong bộ nhớ?#Kiểu primitive#Kiểu reference#Kiểu format#Không có đáp án đúng#B
