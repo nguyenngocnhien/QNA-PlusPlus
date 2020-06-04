@@ -2,6 +2,7 @@ package vn.plusplus.qna.service;
 
 import vn.plusplus.qna.interfaces.QNAInterface;
 import vn.plusplus.qna.model.Answer;
+import vn.plusplus.qna.model.AnswerItem;
 import vn.plusplus.qna.model.Question;
 
 import java.io.*;
@@ -70,26 +71,20 @@ public class QNAService implements QNAInterface {
 
     @Override
     public void saveAnswer(List<Answer> answers, String userName) {
-        FileWriter fileWriter = null;
-        BufferedWriter bufferedWriter = null;
-        File file = new File("C:/data/answer.txt");
-        if (file.exists()){
-            System.out.println("Đã tồn tại file");
-        }else System.out.println("Chưa có file");
-        String absolutePath = file.getAbsolutePath();
         try {
-            fileWriter = new FileWriter(absolutePath);
-            bufferedWriter = new BufferedWriter(fileWriter);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        finally {
-            try {
-                fileWriter.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+            File file = new File("C:\\Users\\tonie\\IdeaProjects\\QNA-PlusPlus\\data\\answer.txt");
+            FileWriter fileWriter = new FileWriter(file);
+            BufferedWriter br = new BufferedWriter(fileWriter);
+            if (!file.exists()){
+                file.createNewFile();
+                br.write(answers.toString());
+                br.close();
+            }else {
+                br.write(answers.toString());
+                br.close();
             }
+        }catch (IOException e){
+            System.out.println(e);
         }
     }
 }
