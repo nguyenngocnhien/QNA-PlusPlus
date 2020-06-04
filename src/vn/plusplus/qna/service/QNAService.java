@@ -4,11 +4,7 @@ import vn.plusplus.qna.interfaces.QNAInterface;
 import vn.plusplus.qna.model.Answer;
 import vn.plusplus.qna.model.Question;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,7 +55,21 @@ public abstract class QNAService implements QNAInterface {
 
     @Override
     public void saveAnswer(List<Answer> answers, String userName) {
-
+        FileWriter fileWriter = null;
+        BufferedOutputStream bufferedOutputStream = null;
+        File file = new File("/data"+"saveAnswer"+".txt");
+        if (file.exists()){
+            System.out.println("Đã tồn tại file");
+        }else System.out.println("Chưa có file");
+        String absolutePath = file.getAbsolutePath();
+        try {
+            fileWriter = new FileWriter(absolutePath);
+//            bufferedOutputStream = new BufferedOutputStream(fileWriter);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            System.out.println("Checked exception");
+        }
 
     }
 }
