@@ -1,5 +1,5 @@
-JV1_1,Kích thước của 1 Char là bao nhiêu?,4 bit,7 bit,8 bit,16 bit,D
-JV1_2,Đâu là cú pháp của phương thức main trong Java?,public static int main(String[] args),public int main(String[] args),public static void main(String[] args),None of the above,C
-JV1_3,Đâu là cú pháp chính xác để in ra "Hello World" trong Java?,System.out.println("Hello World");,print ("Hello World");,Console.WriteLine("Hello World");,echo("Hello World");,A
-JV1_4,Phương thức nào được sử dụng để lấy độ dài của chuỗi?,getSize(),len(),getLength(),length(),D
-JV1_5,Phương thức nào trả về chữ in hoa?,toUpperCase(),tuc(),touppercase(),toUpperCase(),D
+JV1_1#Kích thước của 1 Char là bao nhiêu?#4 bit#7 bit#8 bit#16 bit#D
+JV1_2#Đâu là cú pháp của phương thức main trong Java?#public static int main(String[] args)#public int main(String[] args)#public static void main(String[] args)#None of the above#C
+JV1_3#Đâu là cú pháp chính xác để in ra "Hello World" trong Java?#System.out.println("Hello World");#print ("Hello World");#Console.WriteLine("Hello World");#echo("Hello World");#A
+JV1_4#Phương thức nào được sử dụng để lấy độ dài của chuỗi?#getSize()#len()#getLength()#length()#D
+JV1_5#Phương thức nào trả về chữ in hoa?#toUpperCase()#tuc()#touppercase()#toUpperCase()#D
