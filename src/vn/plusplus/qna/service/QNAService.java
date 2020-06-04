@@ -10,9 +10,11 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public abstract class QNAService implements QNAInterface {
+public class QNAService implements QNAInterface {
     @Override
     public List<Question> findQuestionByCondition(String language, String level){
         List<Question> listQuest = new ArrayList<>();
@@ -27,13 +29,6 @@ public abstract class QNAService implements QNAInterface {
             while ((line = br.readLine())!=null){
                 String[] question = line.split("#");
                 Question q = new Question(question[0],question[1],question[2],question[3],question[4],question[5],question[6]);
-                q.setqCode(question[0]);
-                q.setqCOntent(question[1]);
-                q.setqA(question[2]);
-                q.setqB(question[3]);
-                q.setqC(question[4]);
-                q.setqD(question[5]);
-                q.setqAnswer(question[6]);
                 listQuest.add(q);
             }
         } catch (FileNotFoundException e) {
@@ -54,18 +49,27 @@ public abstract class QNAService implements QNAInterface {
 
     @Override
     public int checkAnswer(List<Question> questions, Answer answers) {
-        List<String> correctAnswer = new ArrayList<>();
-        List<String> userAnswer = answers.getAnswerItems();
-        for(Question q:questions){
-            correctAnswer.add(q.getqAnswer());
+//        List<String> correctAnswer = new ArrayList<>();
+//        List<String> userAnswer = answers.
+//        List<String> questionCode = new ArrayList<>();
+//        for(Question q:questions){
+//            correctAnswer.add(q.getqAnswer());
+//            questionCode.add(q.getqCode());
+//        }
+//        int dem = 0;
+//        for(int i = 0; i< correctAnswer.size();i++){
+//            if (correctAnswer.get(i).equals(userAnswer.get(i))){
+//                dem++;
+//            }
+//        }
+        List<String> questionCode = new ArrayList<>();
+        for (Question q: questions){
+            questionCode.add(q.getqCode());
         }
-        int dem = 0;
-        for(int i = 0; i< correctAnswer.size();i++){
-            if (correctAnswer.get(i).equals(userAnswer.get(i))){
-                dem++;
-            }
-        }
-        return dem;
+        Map<String,String> userAnswer = new HashMap<>();
+        String userName = answers.getUserName();
+
+        return 0;
     }
 
     @Override
