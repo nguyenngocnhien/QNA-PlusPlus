@@ -2,13 +2,10 @@ package vn.plusplus.qna.service;
 
 import vn.plusplus.qna.interfaces.QNAInterface;
 import vn.plusplus.qna.model.Answer;
+import vn.plusplus.qna.model.AnswerItem;
 import vn.plusplus.qna.model.Question;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -74,6 +71,20 @@ public class QNAService implements QNAInterface {
 
     @Override
     public void saveAnswer(List<Answer> answers, String userName) {
-
+        try {
+            File file = new File("C:\\Users\\tonie\\IdeaProjects\\QNA-PlusPlus\\data\\answer.txt");
+            FileWriter fileWriter = new FileWriter(file);
+            BufferedWriter br = new BufferedWriter(fileWriter);
+            if (!file.exists()){
+                file.createNewFile();
+                br.write(answers.toString());
+                br.close();
+            }else {
+                br.write(answers.toString());
+                br.close();
+            }
+        }catch (IOException e){
+            System.out.println(e);
+        }
     }
 }
