@@ -1,12 +1,6 @@
 package vn.plusplus.qna.model;
 
-import vn.plusplus.qna.interfaces.QNAInterface;
-
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-
-public abstract class Question implements QNAInterface {
+public class Question{
     String qCode,qCOntent,qA,qB,qC,qD,qAnswer;
     public Question(){};
     public Question(String qCode,String qCOntent,String qA,String qB,String qC,String qD,String qAnswer){};
@@ -78,27 +72,5 @@ public abstract class Question implements QNAInterface {
                 ", qD='" + qD + '\'' +
                 ", qAnswer='" + qAnswer + '\'' +
                 '}';
-    }
-
-    public List<Question> findQuestionByCondition(String language, String level) throws IOException {
-        List<Question> listQuest = new ArrayList<>();
-        FileReader fr = null;
-        BufferedReader br = null;
-        File file = new File("question_"+language+"_"+level+".txt");
-        String filePath = file.getAbsolutePath();
-        try {
-            fr = new FileReader(filePath);
-            br = new BufferedReader(fr);
-            String line = "";
-            while ((line = br.readLine())!=null){
-                String[] question = line.split("#");
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("Không tìm thấy dữ liệu!");
-        }finally {
-            fr.close();
-            br.close();
-        }
-        return null;
     }
 }
