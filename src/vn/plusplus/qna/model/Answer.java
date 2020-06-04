@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Answer {
     String userName;
-    List<String> answerItems;
+    List<AnswerItem> answerItems;
 
     public Answer() {
     }
@@ -19,13 +19,5 @@ public class Answer {
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public List<String> getAnswerItems() {
-        return answerItems;
-    }
-
-    public void setAnswerItems(List<String> answerItems) {
-        this.answerItems = answerItems;
     }
 }
