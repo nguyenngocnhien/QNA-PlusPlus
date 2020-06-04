@@ -6,6 +6,13 @@ public class Answer {
     String userName;
     List<String> answerItems;
 
+    public Answer() {
+    }
+
+    public Answer(String userName) {
+        this.userName = userName;
+    }
+
     public String getUserName() {
         return userName;
     }

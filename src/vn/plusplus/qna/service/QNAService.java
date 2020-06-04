@@ -15,19 +15,15 @@ import java.util.List;
 public abstract class QNAService implements QNAInterface {
     @Override
     public List<Question> findQuestionByCondition(String language, String level){
-        //Khởi tạo danh sách câu hỏi
         List<Question> listQuest = new ArrayList<>();
         FileReader fr = null;
         BufferedReader br = null;
         File file = new File("data/" + "question_"+language+"_"+level+".txt");
-        //Lấy đường dẫn tới tệp
         String filePath = file.getAbsolutePath();
-        //Đọc file
         try {
             fr = new FileReader(filePath);
             br = new BufferedReader(fr);
             String line = "";
-            //Thêm từng câu hỏi vào ArrayList
             while ((line = br.readLine())!=null){
                 String[] question = line.split("#");
                 Question q = new Question(question[0],question[1],question[2],question[3],question[4],question[5],question[6]);
@@ -51,26 +47,14 @@ public abstract class QNAService implements QNAInterface {
             } catch (Exception e){
                 System.out.println("Có lỗi xảy ra!");
             }
+
         }
-        //Trả về danh sách câu hỏi thỏa mãn điều kiện
         return listQuest;
     }
 
     @Override
-    public int checkAnswer(List<Question> questions, Answer answers) {
-        List<String> userAnswer = answers.getAnswerItems();
-        List<String> correctAnswer = new ArrayList<>();
-        for(Question q:questions){
-            correctAnswer.add(q.getqAnswer());
-        }
-        int dem = 0;
-        for(int i = 0; i< correctAnswer.size();i++){
-            if (correctAnswer.get(i).equals(userAnswer.get(i))){
-                dem++;
-            }
-        }
-        //Trả về số lượng câu đúng
-        return dem;
+    public int checkAnswer(List<Question> questions, List<Answer> answers) {
+        return 0;
     }
 
     @Override
