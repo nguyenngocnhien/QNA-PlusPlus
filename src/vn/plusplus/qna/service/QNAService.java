@@ -65,7 +65,7 @@ public abstract class QNAService implements QNAInterface {
                 dem++;
             }
         }
-        return 0;
+        return dem;
     }
 
     @Override
