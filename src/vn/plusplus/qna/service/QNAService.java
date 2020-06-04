@@ -46,27 +46,18 @@ public class QNAService implements QNAInterface {
 
     @Override
     public int checkAnswer(List<Question> questions, Answer answers) {
-//        List<String> correctAnswer = new ArrayList<>();
-//        List<String> userAnswer = answers.
-//        List<String> questionCode = new ArrayList<>();
-//        for(Question q:questions){
-//            correctAnswer.add(q.getqAnswer());
-//            questionCode.add(q.getqCode());
-//        }
-//        int dem = 0;
-//        for(int i = 0; i< correctAnswer.size();i++){
-//            if (correctAnswer.get(i).equals(userAnswer.get(i))){
-//                dem++;
-//            }
-//        }
-        List<String> questionCode = new ArrayList<>();
-        for (Question q: questions){
-            questionCode.add(q.getqCode());
+        Map<String,String> correctAnswer = new HashMap<>();
+        List<AnswerItem> answer = answers.getAnswerItems();
+        for (Question question: questions){
+            correctAnswer.put(question.getqCode(),question.getqAnswer());
         }
-        Map<String,String> userAnswer = new HashMap<>();
-        String userName = answers.getUserName();
-
-        return 0;
+        int dem =0;
+        for(AnswerItem answerItem: answer){
+            if(answerItem.getAnswer().equals(correctAnswer.get(answerItem.getIdQuestion()))){
+                dem++;
+            }
+        }
+        return dem;
     }
 
     @Override
