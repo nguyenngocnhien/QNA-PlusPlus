@@ -2,7 +2,16 @@ package vn.plusplus.qna.model;
 
 public class Question{
     public String qCode,qCOntent,qA,qB,qC,qD,qAnswer;
-    public Question(String qCode,String qCOntent,String qA,String qB,String qC,String qD,String qAnswer){};
+
+    public Question(String qCode, String qCOntent, String qA, String qB, String qC, String qD, String qAnswer) {
+        this.qCode = qCode;
+        this.qCOntent = qCOntent;
+        this.qA = qA;
+        this.qB = qB;
+        this.qC = qC;
+        this.qD = qD;
+        this.qAnswer = qAnswer;
+    }
 
     public String getqCode() {
         return qCode;
