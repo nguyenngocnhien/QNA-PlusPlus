@@ -14,11 +14,11 @@ import java.util.List;
 
 public class QNAService implements QNAInterface {
     @Override
-    public List<Question> findQuestionByCondition(String language, String level) throws IOException {
+    public List<Question> findQuestionByCondition(String language, String level){
         List<Question> listQuest = new ArrayList<>();
         FileReader fr = null;
         BufferedReader br = null;
-        File file = new File("question_"+language+"_"+level+".txt");
+        File file = new File("data/" + "question_"+language+"_"+level+".txt");
         String filePath = file.getAbsolutePath();
         try {
             fr = new FileReader(filePath);
@@ -29,9 +29,16 @@ public class QNAService implements QNAInterface {
             }
         } catch (FileNotFoundException e) {
             System.out.println("Không tìm thấy dữ liệu!");
-        }finally {
-            fr.close();
-            br.close();
+        } catch (IOException e){
+            System.out.println("Lỗi đọc file!");
+        } finally {
+            try {
+                fr.close();
+                br.close();
+            } catch (Exception e){
+                System.out.println("Có lỗi xảy ra!");
+            }
+
         }
         return null;
     }
