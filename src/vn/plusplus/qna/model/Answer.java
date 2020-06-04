@@ -20,4 +20,12 @@ public class Answer {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
+    public List<AnswerItem> getAnswerItems() {
+        return answerItems;
+    }
+
+    public void setAnswerItems(List<AnswerItem> answerItems) {
+        this.answerItems = answerItems;
+    }
 }
