@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QNAService implements QNAInterface {
+public abstract class QNAService implements QNAInterface {
     @Override
     public List<Question> findQuestionByCondition(String language, String level){
         List<Question> listQuest = new ArrayList<>();
@@ -26,6 +26,8 @@ public class QNAService implements QNAInterface {
             String line = "";
             while ((line = br.readLine())!=null){
                 String[] question = line.split("#");
+                Question q = new Question(question[0],question[1],question[2],question[3],question[4],question[5],question[6]);
+                listQuest.add(q);
             }
         } catch (FileNotFoundException e) {
             System.out.println("Không tìm thấy dữ liệu!");
@@ -40,7 +42,7 @@ public class QNAService implements QNAInterface {
             }
 
         }
-        return null;
+        return listQuest;
     }
 
     @Override
