@@ -63,7 +63,7 @@ public class QNAService implements QNAInterface {
     @Override
     public void saveAnswer(List<Answer> answers, String userName) {
         try {
-            File file = new File("C:\\Users\\tonie\\IdeaProjects\\QNA-PlusPlus\\data\\answer.txt");
+            File file = new File("/QNA-PlusPlus/data/answer.txt");
             FileWriter fileWriter = new FileWriter(file);
             BufferedWriter br = new BufferedWriter(fileWriter);
             if (!file.exists()){
