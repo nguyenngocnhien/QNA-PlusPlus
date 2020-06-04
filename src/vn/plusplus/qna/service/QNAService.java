@@ -50,26 +50,42 @@ public abstract class QNAService implements QNAInterface {
 
     @Override
     public int checkAnswer(List<Question> questions, Answer answers) {
-        return 0;
+        List<String> correctAnswer = new ArrayList<>();
+        List<String> userAnswer = answers.getAnswerItems();
+        for(Question q:questions){
+            correctAnswer.add(q.getqAnswer());
+        }
+        int dem = 0;
+        for(int i = 0; i< correctAnswer.size();i++){
+            if (correctAnswer.get(i).equals(userAnswer.get(i))){
+                dem++;
+            }
+        }
+        return dem;
     }
 
     @Override
     public void saveAnswer(List<Answer> answers, String userName) {
         FileWriter fileWriter = null;
-        BufferedOutputStream bufferedOutputStream = null;
-        File file = new File("/data"+"saveAnswer"+".txt");
+        BufferedWriter bufferedWriter = null;
+        File file = new File("C:/data/answer.txt");
         if (file.exists()){
             System.out.println("Đã tồn tại file");
         }else System.out.println("Chưa có file");
         String absolutePath = file.getAbsolutePath();
         try {
             fileWriter = new FileWriter(absolutePath);
-//            bufferedOutputStream = new BufferedOutputStream(fileWriter);
+            bufferedWriter = new BufferedWriter(fileWriter);
+
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
-            System.out.println("Checked exception");
         }
-
+        finally {
+            try {
+                fileWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
