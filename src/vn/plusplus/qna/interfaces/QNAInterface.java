@@ -8,7 +8,9 @@ import java.util.List;
 
 public interface QNAInterface {
     List<Question> findQuestionByCondition(String language, String level) throws IOException;
-    int checkAnswer(List<Question> questions, List<Answer> answers);
+
+    int checkAnswer(List<Question> questions, Answer answers);
+
     void saveAnswer(List<Answer> answers, String userName);
 }
 
