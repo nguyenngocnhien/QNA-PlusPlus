@@ -2,6 +2,15 @@ package vn.plusplus.qna.model;
 
 public class AnswerItem {
     String idQuestion,answer;
+
+    public AnswerItem() {
+    }
+
+    public AnswerItem(String idQuestion, String answer) {
+        this.idQuestion = idQuestion;
+        this.answer = answer;
+    }
+
     public String getIdQuestion() {
         return idQuestion;
     }
