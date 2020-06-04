@@ -53,7 +53,18 @@ public abstract class QNAService implements QNAInterface {
     }
 
     @Override
-    public int checkAnswer(List<Question> questions, List<Answer> answers) {
+    public int checkAnswer(List<Question> questions, Answer answers) {
+        List<String> correctAnswer = new ArrayList<>();
+        List<String> userAnswer = answers.getAnswerItems();
+        for(Question q:questions){
+            correctAnswer.add(q.getqAnswer());
+        }
+        int dem = 0;
+        for(int i = 0; i< correctAnswer.size();i++){
+            if (correctAnswer.get(i).equals(userAnswer.get(i))){
+                dem++;
+            }
+        }
         return 0;
     }
 
