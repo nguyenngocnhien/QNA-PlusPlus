@@ -53,7 +53,7 @@ public abstract class QNAService implements QNAInterface {
     }
 
     @Override
-    public int checkAnswer(List<Question> questions, List<Answer> answers) {
+    public int checkAnswer(List<Question> questions, Answer answers) {
         return 0;
     }
 
