@@ -106,8 +106,16 @@ public class QNAService implements QNAInterface {
 
     @Override
     public Answer buildAnswerFromUserInput(String answer, String userName) {
-        return null;
+        //answer example: JV1_1:A#JV1_2:B#....
+        Answer asw = new Answer();
+        String[] answerArray = answer.split("#");
+        List<AnswerItem> listAnswerItem = new ArrayList<>();
+        for (String anserItem: answerArray){
+            String[] answerArray2 = anserItem.split(":");
+            listAnswerItem.add(new AnswerItem(answerArray2[0],answerArray2[1]));
+        }
+        asw.setAnswerItems(listAnswerItem);
+        asw.setUserName(userName);
+        return asw;
     }
-
-
 }
