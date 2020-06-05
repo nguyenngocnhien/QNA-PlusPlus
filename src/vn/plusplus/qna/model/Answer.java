@@ -9,6 +9,11 @@ public class Answer {
     public Answer() {
     }
 
+    public Answer(String userName, List<AnswerItem> answerItems) {
+        this.userName = userName;
+        this.answerItems = answerItems;
+    }
+
     public Answer(String userName) {
         this.userName = userName;
     }

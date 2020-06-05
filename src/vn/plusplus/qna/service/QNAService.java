@@ -63,7 +63,7 @@ public class QNAService implements QNAInterface {
     }
 
     @Override
-    public void saveAnswer(Answer answer, String userName) {
+    public void saveAnswer(Answer answer) {
         try {
             FileWriter fileWriter = null;
             BufferedWriter br = null;
@@ -79,7 +79,7 @@ public class QNAService implements QNAInterface {
                 fileWriter = new FileWriter(s +"/data/answer.txt");
                 br = new BufferedWriter(fileWriter);
                 file.createNewFile();
-                br.write(userName+"#");
+                br.write(answer.getUserName()+"#");
                 for (AnswerItem answerItem:answerItems){
                     br.write(answerItem.toString());
                 }
@@ -89,7 +89,8 @@ public class QNAService implements QNAInterface {
                 // Append mode when file is existed
                 fileWriter = new FileWriter(file, true);
                 br = new BufferedWriter(fileWriter);
-                br.write(userName+"#");
+                br.newLine();
+                br.write(answer.getUserName()+"#");
                 for (AnswerItem answerItem:answerItems){
                     br.write(answerItem.toString());
                 }
@@ -113,8 +114,16 @@ public class QNAService implements QNAInterface {
 
     @Override
     public Answer buildAnswerFromUserInput(String answer, String userName) {
-        return null;
+        //answer example: JV1_1:A#JV1_2:B#....
+        Answer asw = new Answer();
+        String[] answerArray = answer.split("#");
+        List<AnswerItem> listAnswerItem = new ArrayList<>();
+        for (String anserItem: answerArray){
+            String[] answerArray2 = anserItem.split(":");
+            listAnswerItem.add(new AnswerItem(answerArray2[0],answerArray2[1]));
+        }
+        asw.setAnswerItems(listAnswerItem);
+        asw.setUserName(userName);
+        return asw;
     }
-
-
 }
