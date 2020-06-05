@@ -101,7 +101,14 @@ public class QNAService implements QNAInterface {
     }
     @Override
     public void displayQuestion(List<Question> questions) {
-
+        questions = new ArrayList<>();
+        for (int i=0;i<questions.size();i++){
+            System.out.println(questions.get(i).getqCode()+" : "+questions.get(i).getqCOntent());
+            System.out.println("A:"+questions.get(i).getqA());
+            System.out.println("B:"+questions.get(i).getqB());
+            System.out.println("C:"+questions.get(i).getqC());
+            System.out.println("D:"+questions.get(i).getqD());
+        }
     }
 
     @Override
