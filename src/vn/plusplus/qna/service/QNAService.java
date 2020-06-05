@@ -92,4 +92,16 @@ public class QNAService implements QNAInterface {
             System.out.println(e);
         }
     }
+
+    @Override
+    public void displayQuestion(List<Question> questions) {
+
+    }
+
+    @Override
+    public Answer buildAnswerFromUserInput(String answer, String userName) {
+        return null;
+    }
+
+
 }
