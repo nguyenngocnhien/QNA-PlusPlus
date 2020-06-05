@@ -6,6 +6,8 @@ import vn.plusplus.qna.model.AnswerItem;
 import vn.plusplus.qna.model.Question;
 
 import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -61,17 +63,29 @@ public class QNAService implements QNAInterface {
     }
 
     @Override
-    public void saveAnswer(List<Answer> answers, String userName) {
+    public void saveAnswer(Answer answer, String userName) {
         try {
-            File file = new File("/QNA-PlusPlus/data/answer.txt");
-            FileWriter fileWriter = new FileWriter(file);
-            BufferedWriter br = new BufferedWriter(fileWriter);
+            FileWriter fileWriter = null;
+            BufferedWriter br = null;
+            File file = new File("data/answer.txt");
             if (!file.exists()){
+
+                //Get current path of project in local computer
+                Path currentRelativePath = Paths.get("");
+                String s = currentRelativePath.toAbsolutePath().toString();
+
+                //Create new file answer.txt with absoluatePath
+                fileWriter = new FileWriter(s +"/data/answer.txt");
+                br = new BufferedWriter(fileWriter);
                 file.createNewFile();
-                br.write(answers.toString());
+                br.write(answer.toString());
                 br.close();
             }else {
-                br.write(answers.toString());
+
+                // Append mode when file is existed
+                fileWriter = new FileWriter(file, true);
+                br = new BufferedWriter(fileWriter);
+                br.write(answer.toString());
                 br.close();
             }
         }catch (IOException e){

@@ -11,6 +11,6 @@ public interface QNAInterface {
 
     int checkAnswer(List<Question> questions, Answer answers);
 
-    void saveAnswer(List<Answer> answers, String userName);
+    void saveAnswer(Answer answers, String userName);
 }
 
