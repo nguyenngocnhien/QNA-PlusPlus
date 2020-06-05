@@ -6,6 +6,11 @@ public class AnswerItem {
     public AnswerItem() {
     }
 
+    @Override
+    public String toString() {
+        return idQuestion + ":" + answer+";";
+    }
+
     public AnswerItem(String idQuestion, String answer) {
         this.idQuestion = idQuestion;
         this.answer = answer;

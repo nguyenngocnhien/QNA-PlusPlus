@@ -68,6 +68,7 @@ public class QNAService implements QNAInterface {
             FileWriter fileWriter = null;
             BufferedWriter br = null;
             File file = new File("data/answer.txt");
+            List<AnswerItem> answerItems = answer.getAnswerItems();
             if (!file.exists()){
 
                 //Get current path of project in local computer
@@ -78,21 +79,26 @@ public class QNAService implements QNAInterface {
                 fileWriter = new FileWriter(s +"/data/answer.txt");
                 br = new BufferedWriter(fileWriter);
                 file.createNewFile();
-                br.write(answer.toString());
+                br.write(userName+"#");
+                for (AnswerItem answerItem:answerItems){
+                    br.write(answerItem.toString());
+                }
                 br.close();
             }else {
 
                 // Append mode when file is existed
                 fileWriter = new FileWriter(file, true);
                 br = new BufferedWriter(fileWriter);
-                br.write(answer.toString());
+                br.write(userName+"#");
+                for (AnswerItem answerItem:answerItems){
+                    br.write(answerItem.toString());
+                }
                 br.close();
             }
         }catch (IOException e){
             System.out.println(e);
         }
     }
-
     @Override
     public void displayQuestion(List<Question> questions) {
 
