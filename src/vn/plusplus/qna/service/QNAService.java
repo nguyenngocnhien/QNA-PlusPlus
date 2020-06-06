@@ -19,7 +19,7 @@ public class QNAService implements QNAInterface {
         List<Question> listQuest = new ArrayList<>();
         FileReader fr = null;
         BufferedReader br = null;
-        File file = new File("data/" + "question_"+language+"_"+level+".txt");
+        File file = new File("data/" + "question_"+language+"_"+level+".text");
         String filePath = file.getAbsolutePath();
         try {
             fr = new FileReader(filePath);
@@ -67,7 +67,7 @@ public class QNAService implements QNAInterface {
         try {
             FileWriter fileWriter = null;
             BufferedWriter br = null;
-            File file = new File("data/answer.txt");
+            File file = new File("data/answer.text");
             List<AnswerItem> answerItems = answer.getAnswerItems();
             if (!file.exists()){
 
@@ -76,7 +76,7 @@ public class QNAService implements QNAInterface {
                 String s = currentRelativePath.toAbsolutePath().toString();
 
                 //Create new file answer.txt with absoluatePath
-                fileWriter = new FileWriter(s +"/data/answer.txt");
+                fileWriter = new FileWriter(s +"/data/answer.text");
                 br = new BufferedWriter(fileWriter);
                 file.createNewFile();
                 br.write(answer.getUserName()+"#");
