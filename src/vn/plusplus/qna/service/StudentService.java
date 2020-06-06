@@ -20,7 +20,7 @@ public class StudentService implements StudentInterface {
     public String findHighestScoreUserName(String language, String level) {
         FileReader fr = null;
         BufferedReader br = null;
-        File file = new File("data/" + "answer_"+language+"_"+level+".text");
+        File file = new File("data/answer.txt");
         String filePath = file.getAbsolutePath();
         String userHighestScore = "";
         try {
@@ -32,11 +32,11 @@ public class StudentService implements StudentInterface {
                 String[] answerArray = line.split("#");
                 answerList.add(answerArray);
             }
-            int highestScore = Integer.parseInt(answerList.get(0)[1]);
-            //answerArray example: nhiempc,80,JV1_1:A;JV1_2:B;....
+            int highestScore = Integer.parseInt(answerList.get(0)[3]);
+            //answerArray example: nhiempc,Java,1,80,JV1_1:A;JV1_2:B;....
             for(int i = 0;i<answerList.size();i++){
-                if(Integer.parseInt(answerList.get(i)[1])>highestScore){
-                    highestScore = Integer.parseInt(answerList.get(i)[1]);
+                if(Integer.parseInt(answerList.get(i)[3])>highestScore&&answerList.get(i)[1]==language&&answerList.get(i)[2]==level){
+                    highestScore = Integer.parseInt(answerList.get(i)[3]);
                     userHighestScore = answerList.get(i)[0];
                 }
             }
