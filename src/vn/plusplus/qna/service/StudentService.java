@@ -2,6 +2,7 @@ package vn.plusplus.qna.service;
 
 import vn.plusplus.qna.interfaces.StudentInterface;
 import vn.plusplus.qna.model.Answer;
+import vn.plusplus.qna.model.AnswerItem;
 import vn.plusplus.qna.model.Question;
 import vn.plusplus.qna.model.User;
 
@@ -13,7 +14,55 @@ public class StudentService implements StudentInterface {
 
     @Override
     public Answer findLastAnswerByUserName(String username) {
-        return null;
+        Answer asw = new Answer();
+        FileReader fr = null;
+        BufferedReader br = null;
+        File file = new File("data/answer.txt");
+        String filePath = file.getAbsolutePath();
+        int index = 0;
+        try {
+            fr = new FileReader(filePath);
+            br = new BufferedReader(fr);
+            String line = "";
+            List<AnswerItem> listAnswerItem = new ArrayList<>();
+            List<String[]> answerList = new ArrayList<>();
+            while ((line = br.readLine())!=null){
+                String[] answerItem = line.split("#");
+                answerList.add(answerItem);
+            }
+            for (int i = answerList.size()-1;i>=0;i--){
+                if(answerList.get(i)[0]==username){
+                    index = i;
+                    //JV1_1:A;JV1_2:B;...
+                    String answer = answerList.get(i)[4];
+                    String[] answerArray = answer.split(";");
+                    for(String as:answerArray){
+                        String[] asItem = as.split(":");
+                        listAnswerItem.add(new AnswerItem(asItem[0],asItem[1]));
+                    }
+                }else {
+                    index = -1;
+                }
+            }
+            asw.setUserName(username);
+            asw.setAnswerItems(listAnswerItem);
+        } catch (FileNotFoundException e) {
+            System.out.println("Không tìm thấy dữ liệu!");
+        } catch (IOException e){
+            System.out.println("Lỗi đọc file!");
+        } finally {
+            try {
+                fr.close();
+                br.close();
+            } catch (Exception e){
+                System.out.println("Có lỗi xảy ra!");
+            }
+        }
+        if(index == -1){
+            return null;
+        }else {
+            return asw;
+        }
     }
 
     @Override
