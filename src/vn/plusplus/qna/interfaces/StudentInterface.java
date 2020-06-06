@@ -5,6 +5,6 @@ import vn.plusplus.qna.model.User;
 
 public interface StudentInterface {
     Answer findLastAnswerByUserName(String username);
-    String findHighestScoreUserName();
+    String findHighestScoreUserName(String language, String level);
     User findUserByUserName(String userName);
 }
