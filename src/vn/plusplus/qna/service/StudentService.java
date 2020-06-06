@@ -18,6 +18,7 @@ public class StudentService implements StudentInterface {
 
     @Override
     public String findHighestScoreUserName(String language, String level) {
+        QNAService qnaService = new QNAService();
         FileReader fr = null;
         BufferedReader br = null;
         File file = new File("data/" + "answer_"+language+"_"+level+".text");
@@ -57,6 +58,29 @@ public class StudentService implements StudentInterface {
 
     @Override
     public User findUserByUserName(String userName) {
+        List<User> user = new ArrayList<>();
+        FileReader fl = null;
+        BufferedReader br = null;
+        File file = new File("data/user.text");
+        String abp = file.getAbsolutePath();
+        try {
+            fl = new FileReader(abp);
+            br = new BufferedReader(fl);
+            String line="";
+            while ((line=br.readLine())!=null){
+                String[] infoUser = line.split("#");
+                if (userName.equals(infoUser[0])){
+                    System.out.println("UserName :"+infoUser[0]);
+                    System.out.println("FullName :"+infoUser[1]);
+                    System.out.println("Email :"+infoUser[2]);
+                    System.out.println("Phone :"+infoUser[3]);
+                }
+            }
+        } catch (FileNotFoundException exception) {
+            exception.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 }

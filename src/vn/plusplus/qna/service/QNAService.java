@@ -63,12 +63,12 @@ public class QNAService implements QNAInterface {
     }
 
     @Override
-    public void saveAnswer(Answer answer) {
+    public void saveAnswer(Answer answers, String language, String level,Float score) {
         try {
             FileWriter fileWriter = null;
             BufferedWriter br = null;
             File file = new File("data/answer.text");
-            List<AnswerItem> answerItems = answer.getAnswerItems();
+            List<AnswerItem> answerItems = answers.getAnswerItems();
             if (!file.exists()){
 
                 //Get current path of project in local computer
@@ -79,7 +79,7 @@ public class QNAService implements QNAInterface {
                 fileWriter = new FileWriter(s +"/data/answer.text");
                 br = new BufferedWriter(fileWriter);
                 file.createNewFile();
-                br.write(answer.getUserName()+"#");
+                br.write(answers.getUserName()+"#"+language+"#"+level+"#"+score+"#");
                 for (AnswerItem answerItem:answerItems){
                     br.write(answerItem.toString());
                 }
@@ -90,7 +90,7 @@ public class QNAService implements QNAInterface {
                 fileWriter = new FileWriter(file, true);
                 br = new BufferedWriter(fileWriter);
                 br.newLine();
-                br.write(answer.getUserName()+"#");
+                br.write(answers.getUserName()+"#"+language+"#"+level+"#"+score+"#");
                 for (AnswerItem answerItem:answerItems){
                     br.write(answerItem.toString());
                 }
@@ -100,9 +100,9 @@ public class QNAService implements QNAInterface {
             System.out.println(e);
         }
     }
+
     @Override
     public void displayQuestion(List<Question> questions) {
-        questions = new ArrayList<>();
         for (int i=0;i<questions.size();i++){
             System.out.println(questions.get(i).getqCode()+" : "+questions.get(i).getqCOntent());
             System.out.println("A:"+questions.get(i).getqA());
