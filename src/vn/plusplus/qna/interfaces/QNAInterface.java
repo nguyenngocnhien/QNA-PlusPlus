@@ -16,5 +16,7 @@ public interface QNAInterface {
     void displayQuestion(List<Question> questions);
 
     Answer buildAnswerFromUserInput(String answer, String userName);
+
+    Question findQuestionByCode(String qCode);
 }
 

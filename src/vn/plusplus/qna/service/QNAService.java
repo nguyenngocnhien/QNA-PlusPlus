@@ -126,4 +126,9 @@ public class QNAService implements QNAInterface {
         asw.setUserName(userName);
         return asw;
     }
+
+    @Override
+    public Question findQuestionByCode(String qCode) {
+        return null;
+    }
 }
