@@ -132,4 +132,16 @@ public class StudentService implements StudentInterface {
         }
         return null;
     }
+
+    @Override
+    public void displayAnswer(Answer answer) {
+
+    }
+
+    @Override
+    public void displayUser(User user) {
+
+    }
+
+
 }

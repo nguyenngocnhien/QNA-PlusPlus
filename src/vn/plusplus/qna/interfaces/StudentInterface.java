@@ -7,4 +7,8 @@ public interface StudentInterface {
     Answer findLastAnswerByUserName(String username);
     String findHighestScoreUserName(String language, String level);
     User findUserByUserName(String userName);
+
+    void displayAnswer(Answer answer);
+
+    void displayUser(User user);
 }

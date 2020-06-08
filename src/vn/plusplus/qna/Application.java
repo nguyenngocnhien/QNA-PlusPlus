@@ -2,6 +2,7 @@ package vn.plusplus.qna;
 
 import vn.plusplus.qna.model.Answer;
 import vn.plusplus.qna.model.Question;
+import vn.plusplus.qna.model.User;
 import vn.plusplus.qna.service.QNAService;
 import vn.plusplus.qna.service.StudentService;
 
@@ -51,7 +52,16 @@ public class Application {
                 String user = scanner.nextLine();
                 Answer answerUser = studentService.findLastAnswerByUserName(user);
                 System.out.println("Bai thi gan nhat cua ban: ");
-                System.out.println(answerUser.getAnswerItems().toString());
+                studentService.displayAnswer(answerUser);
+            case 3:
+                System.out.println("Nhap vao ngon ngu: ");
+                String languageF = scanner.nextLine();
+                System.out.println("Nhao vao level: ");
+                String levelF = scanner.nextLine();
+
+                String userF = studentService.findHighestScoreUserName(languageF, levelF);
+                User userModel = studentService.findUserByUserName(userF);
+                studentService.displayUser(userModel);
         }
     }
 
