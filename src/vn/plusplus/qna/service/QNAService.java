@@ -67,7 +67,7 @@ public class QNAService implements QNAInterface {
         try {
             FileWriter fileWriter = null;
             BufferedWriter br = null;
-            File file = new File("data/answer.text");
+            File file = new File("data/answer.txt");
             List<AnswerItem> answerItems = answers.getAnswerItems();
             if (!file.exists()){
 
@@ -76,7 +76,7 @@ public class QNAService implements QNAInterface {
                 String s = currentRelativePath.toAbsolutePath().toString();
 
                 //Create new file answer.txt with absoluatePath
-                fileWriter = new FileWriter(s +"/data/answer.text");
+                fileWriter = new FileWriter(s +"/data/answer.txt");
                 br = new BufferedWriter(fileWriter);
                 file.createNewFile();
                 br.write(answers.getUserName()+"#"+language+"#"+level+"#"+score+"#");
@@ -109,6 +109,7 @@ public class QNAService implements QNAInterface {
             System.out.println("B:"+questions.get(i).getqB());
             System.out.println("C:"+questions.get(i).getqC());
             System.out.println("D:"+questions.get(i).getqD());
+            System.out.println();
         }
     }
 

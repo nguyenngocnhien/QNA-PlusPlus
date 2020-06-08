@@ -19,6 +19,7 @@ public class Application {
         int option = scanner.nextInt();
         scanner.nextLine();
         QNAService qnaService = new QNAService();
+        StudentService studentService = new StudentService();
         switch (option){
             case 1:
                 System.out.println("Xin moi nhap vao language: ");
@@ -27,8 +28,13 @@ public class Application {
                 String level = scanner.nextLine();
                 List<Question> questions = qnaService.findQuestionByCondition(language, level);
                 qnaService.displayQuestion(questions);
-                System.out.println("Nhap vao cau tra loi theo dinh dang: MA_CAU_HOI_1:CAU_TRA_LOI_1#MA_CAU_HOI_2:CAU_TRA_LOI_2");
-                String answerText = scanner.nextLine();
+                System.out.println("Nhap vao cau tra loi theo thu tu: A,B,C,D");
+                String answerInput = scanner.nextLine();
+                String [] answerList = answerInput.split(",");
+                String answerText = "";
+                for (int i = 0; i<questions.size(); i++){
+                    answerText = answerText + questions.get(i).qCode + ":" + answerList[i] + "#";
+                }
                 System.out.println("Nhap vao username:");
                 String userName = scanner.nextLine();
                 Answer answer = qnaService.buildAnswerFromUserInput(answerText, userName);
@@ -40,6 +46,12 @@ public class Application {
                 if(savedAnswer.equals("Yes")){
                     qnaService.saveAnswer(answer,language,level,score);
                 }
+            case 2:
+                System.out.println("Nhap vao username cua ban: ");
+                String user = scanner.nextLine();
+                Answer answerUser = studentService.findLastAnswerByUserName(user);
+                System.out.println("Bai thi gan nhat cua ban: ");
+                System.out.println(answerUser.getAnswerItems().toString());
         }
     }
 

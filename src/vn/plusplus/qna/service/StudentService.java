@@ -31,7 +31,7 @@ public class StudentService implements StudentInterface {
                 answerList.add(answerItem);
             }
             for (int i = answerList.size()-1;i>=0;i--){
-                if(answerList.get(i)[0]==username){
+                if(answerList.get(i)[0].equals(username)){
                     index = i;
                     //JV1_1:A;JV1_2:B;...
                     String answer = answerList.get(i)[4];
@@ -110,7 +110,7 @@ public class StudentService implements StudentInterface {
         List<User> user = new ArrayList<>();
         FileReader fl = null;
         BufferedReader br = null;
-        File file = new File("data/user.text");
+        File file = new File("data/user.txt");
         String abp = file.getAbsolutePath();
         try {
             fl = new FileReader(abp);
