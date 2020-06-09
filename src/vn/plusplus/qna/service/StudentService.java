@@ -40,6 +40,7 @@ public class StudentService implements StudentInterface {
                         String[] asItem = as.split(":");
                         listAnswerItem.add(new AnswerItem(asItem[0],asItem[1]));
                     }
+                    break;
                 }else {
                     index = -1;
                 }
@@ -140,7 +141,10 @@ public class StudentService implements StudentInterface {
 
     @Override
     public void displayUser(User user) {
-
+        System.out.println("Thông tin người dùng:");
+        System.out.println("Họ và tên: "+user.getFullName());
+        System.out.println("Email: "+user.getEmail());
+        System.out.println("Số điện thoại: "+user.getPhone());
     }
 
 
