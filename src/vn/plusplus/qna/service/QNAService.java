@@ -19,7 +19,7 @@ public class QNAService implements QNAInterface {
         List<Question> listQuest = new ArrayList<>();
         FileReader fr = null;
         BufferedReader br = null;
-        File file = new File("data/" + "question_"+language+"_"+level+".text");
+        File file = new File("data/" + "question_"+language+"_"+level+".txt");
         String filePath = file.getAbsolutePath();
         try {
             fr = new FileReader(filePath);

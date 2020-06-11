@@ -136,7 +136,25 @@ public class StudentService implements StudentInterface {
 
     @Override
     public void displayAnswer(Answer answer) {
-
+    String qCode = answer.getAnswerItems().get(0).getIdQuestion();
+    QNAService qnaService = new QNAService();
+    List<Question> questions = new ArrayList<>();
+    if (qCode.equals("JV1_1")){
+        questions = qnaService.findQuestionByCondition("java","1");
+    }else if (qCode.equals("JV2_2")){
+        questions =qnaService.findQuestionByCondition("java","2");
+    }else if (qCode.equals("HTML_1")){
+            questions =qnaService.findQuestionByCondition("html","1");
+        }
+    for (int i = 0; i <questions.size() ; i++) {
+            System.out.println(questions.get(i).getqCode()+":"+questions.get(i).getqCOntent());
+            System.out.println("A:"+questions.get(i).getqA());
+            System.out.println("B:"+questions.get(i).getqB());
+            System.out.println("C:"+questions.get(i).getqC());
+            System.out.println("D:"+questions.get(i).getqD());
+            System.out.println("Đáp án đúng là:"+questions.get(i).getqAnswer());
+            System.out.println("Đáp án bạn chọn là:"+answer.getAnswerItems().get(i).getAnswer());
+        }
     }
 
     @Override
