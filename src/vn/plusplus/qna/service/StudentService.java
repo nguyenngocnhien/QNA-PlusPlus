@@ -112,31 +112,26 @@ public class StudentService implements StudentInterface {
 
     @Override
     public User findUserByUserName(String userName) {
-        List<User> user = new ArrayList<>();
-        FileReader fl = null;
+        User user = new User();
+        FileReader fr = null;
         BufferedReader br = null;
         File file = new File("data/user.txt");
         String abp = file.getAbsolutePath();
         try {
-            fl = new FileReader(abp);
-            br = new BufferedReader(fl);
+            fr = new FileReader(abp);
+            br = new BufferedReader(fr);
             String line = "";
             while ((line = br.readLine()) != null) {
                 String[] infoUser = line.split("#");
-                if (userName.equals(infoUser[0])) {
-                    System.out.println("UserName :" + infoUser[0]);
-                    System.out.println("FullName :" + infoUser[1]);
-                    System.out.println("Email :" + infoUser[2]);
-                    System.out.println("Phone :" + infoUser[3]);
-                    break;
-                }
+                user = new User(infoUser[0],infoUser[1],infoUser[2],infoUser[3]);
+                System.out.println();
             }
         } catch (FileNotFoundException exception) {
             exception.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return user;
     }
 
     @Override
