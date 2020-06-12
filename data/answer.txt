@@ -1,2 +1,4 @@
 kiemnx#java#1#20.0#JV1_1:A;JV1_2:B;JV1_3:C;JV1_4:D;JV1_5:A;
 kiemnx#java#1#20.0#JV1_1:A;JV1_2:B;JV1_3:B;JV1_4:D;JV1_5:B;
+kiemnx#java#1#20.0#JV1_1:A;JV1_2:B;JV1_3:A;JV1_4:A;JV1_5:A;
+kiemnx#java#1#20.0#JV1_1:a;JV1_2:a;JV1_3:a;JV1_4:a;JV1_5:a;

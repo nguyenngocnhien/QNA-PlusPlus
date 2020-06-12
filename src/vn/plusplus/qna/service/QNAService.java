@@ -55,7 +55,7 @@ public class QNAService implements QNAInterface {
         }
         int dem =0;
         for(AnswerItem answerItem: answer){
-            if(answerItem.getAnswer().equals(correctAnswer.get(answerItem.getIdQuestion()))){
+            if(answerItem.getAnswer().equalsIgnoreCase(correctAnswer.get(answerItem.getIdQuestion()))){
                 dem++;
             }
         }
