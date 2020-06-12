@@ -49,6 +49,7 @@ public class Application {
                     if(savedAnswer.equalsIgnoreCase("Yes")){
                         qnaService.saveAnswer(answer,language,level,score);
                     }
+                    System.out.println();
                     break;
                 case 2:
                     System.out.println("Nhap vao username cua ban: ");
@@ -56,6 +57,7 @@ public class Application {
                     Answer answerUser = studentService.findLastAnswerByUserName(user);
                     System.out.println("Bai thi gan nhat cua ban: ");
                     studentService.displayAnswer(answerUser);
+                    System.out.println();
                     break;
                 case 3:
                     System.out.println("Nhap vao ngon ngu: java/html");
@@ -66,6 +68,7 @@ public class Application {
                     String userF = studentService.findHighestScoreUserName(languageF, levelF);
                     User userModel = studentService.findUserByUserName(userF);
                     studentService.displayUser(userModel);
+                    System.out.println();
                     break;
                 case 4:
                     return;
